@@ -12,3 +12,10 @@
     (proje sevisinde bu dosyamızı oluştururuz)
  6-.feature file'lar için resources package'ı altında features isminde bir package daha oluştururuz
  7- features package'ı üstene gelip sağtıklayıp new file ile bir feature uzantılı file oluşturalım
+
+features ===> features'ların olduğu dosyanın yolunu ver(ContentRoot)
+glue ====> stepDefinition'ların olduğu dosyanın yolunu ver(Source Root)
+tags ====> çalıştırmak istediğin grubu yaz
+:white_check_mark:
+2
+
