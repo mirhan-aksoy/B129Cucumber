@@ -24,6 +24,5 @@ features ===> features'ların olduğu dosyanın yolunu ver(ContentRoot)
         2
 */
 
-
 public class Runner {
 }
