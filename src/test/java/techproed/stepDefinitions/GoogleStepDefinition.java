@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import techproed.pages.GooglePage;
+import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 
 public class GoogleStepDefinition {
@@ -20,4 +21,19 @@ public class GoogleStepDefinition {
     public void basligin_icerdigini_dogrular(String string) {
         Assert.assertTrue(Driver.getDriver().getTitle().contains(string));
     }
+    @Given("kullanici googleda {string} aratacaktir")
+    public void kullanici_googleda_aratacaktir(String string) throws InterruptedException {
+        Thread.sleep(3000);
+        googlePage=new GooglePage();
+        googlePage.aramaKutusu.sendKeys(ConfigReader.getProperty(string), Keys.ENTER);
+
+    }
+
+    @Given("basligin {string} icerdigini dogrulayacaktir")
+    public void basligin_icerdigini_dogrulayacaktir(String string) throws InterruptedException {
+        Thread.sleep(3000);
+        Assert.assertTrue(Driver.getDriver().getTitle().contains(ConfigReader.getProperty(string)));
+
+    }
+
 }

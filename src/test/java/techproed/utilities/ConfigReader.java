@@ -8,8 +8,8 @@ public class ConfigReader {
     //Önce properties dosyasındaki verileri okuyabilmek için java'dan properties class'ından bir obje oluştururuz
     public static Properties properties;
 
-    //Herşeyden önce çalışması için static bloc içerisinde, oluşturmuş olduğum properties dosyasını tanımlar
-    //ve atamasını yaparız. FileInputStream ile dosya yolunu akışa alırız.
+        //Herşeyden önce çalışması için static bloc içerisinde, oluşturmuş olduğum properties dosyasını tanımlar
+        //ve atamasını yaparız. FileInputStream ile dosya yolunu akışa alırız.
 
     static {
         String dosyaYolu = "configuration.properties";
@@ -28,10 +28,8 @@ public class ConfigReader {
         getProperty() methodunu kullanarak bu key'e ait value'yu bize getirir.
          */
 
-
         return properties.getProperty(Key);
     }
-
 
 
 }

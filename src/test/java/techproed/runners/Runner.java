@@ -12,10 +12,22 @@ senaryoyu çalıştırabiliriz
 @RunWith(Cucumber.class)
 
 //Seneryoların nerede ve nasıl çalışacağı, hangi raporu kullanacağıyla alakalı seçenekleri ayarlarız
-@CucumberOptions(features = "src/test/resources/features/day30_IlkFeature",
+@CucumberOptions(plugin = {"pretty","html:src/test/resources/features/htmlReport/cucumber.html",
+        "json:src/test/resources/features/htmlReport/cucumber.json",
+        "junit:src/test/resources/features/htmlReport/cucumber.xml"},
+         //plugin parametresi ile pretty ifadesi kullanılırsa konsolda senaryo ile bilgi gösterir
+        features = "src/test/resources/features/features",
         glue = {"techproed/stepDefinitions"},//Bu parametre ile kodlarımızı yazdığımız stepDefinition
-        //class'ının packege'ını belirtiriz
-        tags = "@gr1 or @sql"  )
+                                             //class'ının packege'ını belirtiriz
+
+        tags = "@tc3",
+        dryRun=false,     // dryRun default olarak false'dur.
+                          // true dersek testlerimizi gercekte calistirmaz
+                          // sadece calistiriyormus gibi kontrol eder.
+                          // ornegin true'da sayfaya gitmez.
+                          // false yaparsak driver acilir ve sayfaya gider
+        monochrome = true
+)
 /*
 features ===> features'ların olduğu dosyanın yolunu ver(ContentRoot)
         glue ====> stepDefinition'ların olduğu dosyanın yolunu ver(Source Root)
@@ -23,6 +35,5 @@ features ===> features'ların olduğu dosyanın yolunu ver(ContentRoot)
         :white_check_mark:
         2
 */
-
 public class Runner {
 }
