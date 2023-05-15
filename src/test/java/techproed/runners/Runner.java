@@ -12,15 +12,15 @@ senaryoyu çalıştırabiliriz
 @RunWith(Cucumber.class)
 
 //Seneryoların nerede ve nasıl çalışacağı, hangi raporu kullanacağıyla alakalı seçenekleri ayarlarız
-@CucumberOptions(plugin = {"pretty","html:src/test/resources/features/htmlReport/cucumber.html",
+@CucumberOptions(plugin = {"pretty","html:src/test/resources/features/htmlReport/cucumberHooks.html",
         "json:src/test/resources/features/htmlReport/cucumber.json",
         "junit:src/test/resources/features/htmlReport/cucumber.xml"},
          //plugin parametresi ile pretty ifadesi kullanılırsa konsolda senaryo ile bilgi gösterir
-        features = "src/test/resources/features/features",
+        features = "src/test/resources/features",
         glue = {"techproed/stepDefinitions"},//Bu parametre ile kodlarımızı yazdığımız stepDefinition
                                              //class'ının packege'ını belirtiriz
 
-        tags = "@tc3",
+        tags = "@hooks",
         dryRun=false,     // dryRun default olarak false'dur.
                           // true dersek testlerimizi gercekte calistirmaz
                           // sadece calistiriyormus gibi kontrol eder.
