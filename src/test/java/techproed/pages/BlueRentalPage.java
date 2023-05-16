@@ -30,6 +30,13 @@ public class BlueRentalPage {
     @FindBy(xpath = "//a[.='Logout']")
     public WebElement logOut;
 
+
     @FindBy(xpath = "//button[.='OK']")
     public WebElement OK;
+
+    @FindBy(xpath = "//*[text()='Profile']")
+    public WebElement profile;
+
+    @FindBy(xpath = "//em")
+    public WebElement verifyEmail;
 }

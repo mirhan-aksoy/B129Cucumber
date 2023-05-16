@@ -4,9 +4,15 @@ package techproed.stepDefinitions;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import techproed.pages.BlueRentalPage;
+import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
+import techproed.utilities.ExcelUtils;
+import techproed.utilities.ReusableMethods;
 
 public class Hooks {
     /*
@@ -36,6 +42,37 @@ methodlar çalışacaktır.
         System.out.println("Amazonda selenium aratıldı");
     }
 
+    @Before("@Excel")
+    public void setUp5(){
+
+        Driver.getDriver().get(ConfigReader.getProperty("blueRentACarUrl"));
+        BlueRentalPage blueRentalPage=new BlueRentalPage();
+        //excel dosya yolunu aldım ve içeriği for ile döngüde kullanacağım
+        ExcelUtils excelUtils = new ExcelUtils("src/test/resources/mysmoketestdata (1).xlsx", "customer_info");
+        for(int i=1; i<=excelUtils.rowCount() ; i++){
+            String email=excelUtils.getCellData(i,0);
+            String passsword=excelUtils.getCellData(i,1);
+            blueRentalPage.loginButton.click();
+            ReusableMethods.bekle(2);
+            blueRentalPage.emailBox.sendKeys(email, Keys.TAB,passsword,Keys.ENTER);
+            ReusableMethods.bekle(2);
+            blueRentalPage.userDropDown.click();
+            ReusableMethods.bekle(2);
+            blueRentalPage.profile.click();
+            ReusableMethods.bekle(2);
+            Assert.assertEquals(blueRentalPage.verifyEmail.getText(),email);
+            ReusableMethods.bekle(2);
+            blueRentalPage.userDropDown.click();
+            ReusableMethods.bekle(2);
+            blueRentalPage.logOut.click();
+            ReusableMethods.bekle(2);
+            blueRentalPage.OK.click();
+    }
+    }
+
+
+
+
 
     @After //import io.cucumber.java.Before
     public void tearDown(Scenario scenario){
@@ -53,3 +90,5 @@ methodlar çalışacaktır.
     }
 
 }
+
+
